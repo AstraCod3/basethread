@@ -61,13 +61,13 @@ mkdir -v $tbt_build_path
 cd "$tbt_build_path"
 
 echo ""
-cmake .. -DCMAKE_BUILD_TYPE="$build_type"
+cmake "$tbt_test_path" -DCMAKE_BUILD_TYPE="$build_type"
 echo ""
 make
 
 echo ""
 mkdir -v $tbt_bin_path
-cp -vf "$tbt_bin_file_testbasethread" "$tbt_bin_path"
+cp -vf "test_thread_base" "$tbt_bin_path"
 
 cd $current_path
 

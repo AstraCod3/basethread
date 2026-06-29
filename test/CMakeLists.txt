@@ -34,9 +34,18 @@ if (UNIX)
         # Gestione corretta per generatori a configurazione singola (Make/Ninja)
         string(TOLOWER "${CMAKE_BUILD_TYPE}" BUILD_TYPE_LOWER)
         message(STATUS "${PROJ_THREAD_BASE} :: ${CMAKE_BUILD_TYPE} mode")
+
+        #
+        # DEBUG (G++)
+        #
         if(BUILD_TOLOWER STREQUAL "debug")
             add_compile_options(-O0 -g3 -ggdb3)
-        elseif(BUILD_TOLOWER STREQUAL "release")
+        endif()
+
+        #
+        # RELEASE (G++)
+        #
+        if(BUILD_TOLOWER STREQUAL "release")
             add_compile_options(-O3)
             add_compile_definitions(NDEBUG)
         endif()
@@ -114,3 +123,4 @@ target_link_libraries(${THREAD_BASE_BIN} PRIVATE
     ${GTEST_LIB_FILE}
     ${GTEST_MAIN_FILE}
 )
+
